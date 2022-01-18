@@ -36,12 +36,11 @@ class BlogView(APIView):
         '''
         if request.user:
             author = Author.objects.filter(user=request.user).first()
-            request.data["author"] = AuthorSerializer(author).data["id"]
+            request.data["author"] = AuthorSerializer(author).data.get('id')
             
             deserialized = BlogSerializer(data=request.data)
 
             if deserialized.is_valid():
-                # deserialized.author=author
                 deserialized.save()
 
                 return Response(
