@@ -4,6 +4,9 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+
+from userapp.models import Author, User
+from userapp.serializers import AuthorSerializer
 from .models import Blog, Tag
 from .serializers import BlogPostSerializer, BlogSerializer, TagSerializer
 
@@ -16,7 +19,9 @@ class BlogView(APIView):
     '''
 
     def get(self, request):
-
+        '''
+        GET all blog-posts:
+        '''
         queryset = Blog.objects.all()
         serialized = BlogSerializer(queryset, many=True)
 
@@ -26,16 +31,36 @@ class BlogView(APIView):
         )
 
     def post(self, request):
+        '''
+        POST a new blog-post:
+        '''
+        if request.user:
+            author = Author.objects.filter(user=request.user).first()
+            request.data["author"] = AuthorSerializer(author).data["id"]
+            
+            deserialized = BlogSerializer(data=request.data)
 
-        data = request.data
-        deserialized = BlogSerializer(data=data)
+            if deserialized.is_valid():
+                # deserialized.author=author
+                deserialized.save()
 
-        if deserialized.is_valid():
-            deserialized.save()
-
+                return Response(
+                    deserialized.data,
+                    status=status.HTTP_201_CREATED
+                )
+            else:
+                return Response(
+                    {
+                        "error": str(deserialized.errors)
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+        elif not request.user:
             return Response(
-                deserialized.data,
-                status=status.HTTP_201_CREATED
+                {
+                    "error": "please login to add a new blog post."
+                },
+                status = status.HTTP_401_UNAUTHORIZED
             )
 
 

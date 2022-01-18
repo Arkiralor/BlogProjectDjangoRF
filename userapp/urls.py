@@ -10,5 +10,6 @@ router.register('authors', AuthorView)
 
 urlpatterns = [
     path('users/', UserView.as_view(), name="all_users"),
+    path('user/generate/', GenerateAuthorView.as_view(), name='generate_author'),
     path('', include(router.urls))
 ]
