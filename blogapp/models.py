@@ -9,6 +9,7 @@ class Tag(models.Model):
 
     def __str__(self):
         representation = f"#{self.name}"
+        return representation
 
 
 class Blog(models.Model):
