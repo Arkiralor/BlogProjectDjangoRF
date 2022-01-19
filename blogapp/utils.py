@@ -7,7 +7,7 @@ class TagUtils:
     Class to handle hashtags in blogposts while adding a new blog-post:
     '''
 
-    def __init__(self, input_list: List[any]):
+    def __init__(self, input_list: List[str]):
         '''
         Initialization method for the class:
         '''
@@ -15,8 +15,8 @@ class TagUtils:
         # Reinitializing these to so the previously passed list is erased,
         # since the __init__ method is being called on the same class-object
         # in the calling function, using a loop.
-        self.TAG_LIST = []
-        self.ID_LIST = []
+        self.TAG_LIST :List[str] = []
+        self.ID_LIST :List[int] = []
         for item in input_list:
             self.TAG_LIST.append(item.replace("#", ""))
 
