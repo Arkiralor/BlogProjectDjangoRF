@@ -37,6 +37,7 @@ class BlogView(APIView):
         '''
         if request.user:
             author = Author.objects.filter(user=request.user).first()
+            print(author.__dict__)
             request.data["author"] = AuthorSerializer(author).data.get('id')
 
             deserialized = BlogSerializer(data=request.data)

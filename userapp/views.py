@@ -121,6 +121,6 @@ class AuthorView(ModelViewSet):
     '''
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAdminUser]
-    queryset = Author.objects.get()
+    queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     lookup_field = 'id'
