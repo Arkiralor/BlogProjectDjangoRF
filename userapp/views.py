@@ -13,8 +13,14 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 # Create your views here.
 
 class UserView(APIView):
+    '''
+    Class to GET/POST model User:
+    '''
     
     def get(self, request):
+        '''
+        GET a list of all users in system:
+        '''
         if request.user.is_staff:
             queryset = User.objects.all()
 
@@ -33,6 +39,9 @@ class UserView(APIView):
             )
 
     def post(self, request):
+        '''
+        POST a new user to the system:
+        '''
         data = request.data
         data['password'] = make_password(data.get('password'))
 
@@ -53,13 +62,16 @@ class UserView(APIView):
             )
 
 class GenerateAuthorView(APIView):
+    '''
+    Class to GET/POST Authors generated from users:
+    '''
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-
-        # user = User.objects.filter(username=request.username)
-
+        '''
+        GET a list of all generated authors in the system:
+        '''
         if request.user.is_staff:
             queryset = Author.objects.all()
             serialized = AuthorSerializer(queryset, many=True)
@@ -77,6 +89,9 @@ class GenerateAuthorView(APIView):
             )
 
     def post(self, request):
+        '''
+        POST/Generate a new author/profile from an existing user in the system:
+        '''
         existing_author = Author.objects.filter(user=request.user).first()
 
         if not existing_author:
@@ -98,7 +113,14 @@ class GenerateAuthorView(APIView):
             )
 
 
+
+
 class AuthorView(ModelViewSet):
-    queryset = Author.objects.all()
+    '''
+    Model Viewset for the model/table 'Author':
+    '''
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAdminUser]
+    queryset = Author.objects.get()
     serializer_class = AuthorSerializer
     lookup_field = 'id'

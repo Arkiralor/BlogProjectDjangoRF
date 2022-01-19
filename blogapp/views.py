@@ -38,7 +38,7 @@ class BlogView(APIView):
         if request.user:
             author = Author.objects.filter(user=request.user).first()
             request.data["author"] = AuthorSerializer(author).data.get('id')
-            
+
             deserialized = BlogSerializer(data=request.data)
 
             if deserialized.is_valid():
@@ -60,7 +60,7 @@ class BlogView(APIView):
                 {
                     "error": "please login to add a new blog post."
                 },
-                status = status.HTTP_401_UNAUTHORIZED
+                status=status.HTTP_401_UNAUTHORIZED
             )
 
 
@@ -72,16 +72,19 @@ class BlogIndView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, id: int):
+        '''
+        Get individual blog-post:
+        '''
         if request.user or not request.user:
             try:
                 queryset = Blog.objects.get(pk=id)
             except Blog.DoesNotExist:
                 return Response(
-                {
-                    "error": f"Blog with ID #{id} does not exist."
-                },
-                status=status.HTTP_404_NOT_FOUND
-            )
+                    {
+                        "error": f"Blog with ID #{id} does not exist."
+                    },
+                    status=status.HTTP_404_NOT_FOUND
+                )
             serialized = BlogPostSerializer(queryset)
 
             return Response(
@@ -90,6 +93,9 @@ class BlogIndView(APIView):
             )
 
     def put(self, request, id: int):
+        '''
+        Update individual blog-post:
+        '''
         blog_post = Blog.objects.get(pk=id)
         if request.user == blog_post.user or request.user.is_superuser:
             update = request.data
@@ -118,6 +124,9 @@ class BlogIndView(APIView):
             )
 
     def delete(self, request, id: int):
+        '''
+        Delete individual blog-post:
+        '''
         try:
             blog_post = Blog.objects.get(pk=id)
             serialized = BlogPostSerializer(blog_post)
@@ -131,11 +140,11 @@ class BlogIndView(APIView):
                 )
             elif request.user != blog_post.user or not request.user.is_superuser:
                 return Response(
-                {
-                    "error": f"you do not have permission to execute this ({__name__}) action."
-                },
-                status=status.HTTP_401_UNAUTHORIZED
-            )
+                    {
+                        "error": f"you do not have permission to execute this ({__name__}) action."
+                    },
+                    status=status.HTTP_401_UNAUTHORIZED
+                )
         except Blog.DoesNotExist:
             return Response(
                 {
@@ -146,6 +155,9 @@ class BlogIndView(APIView):
 
 
 class TagView(ModelViewSet):
+    '''
+    Model Viewset for all tags registered in the system:
+    '''
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     lookup_field = 'id'
