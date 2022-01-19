@@ -42,7 +42,6 @@ class BlogView(APIView):
             if request.data.get("tags"):
                 tags = TagUtils(request.data["tags"])
                 request.data["tags"] = None # Emptying the key-value pair to remove duplicate values.
-
                 request.data["tags"] = tags.resolve_tags() # Replace the hashtags with their IDs.
 
             deserialized = BlogSerializer(data=request.data)
