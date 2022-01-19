@@ -50,7 +50,9 @@ class UserView(APIView):
         if deserialized.is_valid():
             deserialized.save()
             return Response(
-                deserialized.data,
+                {
+                    "success": f"User: {deserialized.data.get('username')} created."
+                },
                 status=status.HTTP_201_CREATED
             )
         else:
