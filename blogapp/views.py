@@ -37,8 +37,23 @@ class BlogView(APIView):
         POST a new blog-post:
         '''
         if request.user:
-            author = Author.objects.filter(user=request.user).first()
-            request.data["author"] = AuthorSerializer(author).data.get('id')
+            try:
+                author = Author.objects.filter(user=request.user).first()
+                if not author:
+                    return Response(
+                    {
+                        "error": f"No author in system for user: {request.user}. Generate an author first."
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+                request.data["author"] = AuthorSerializer(author).data.get('id')
+            except Author.DoesNotExist:
+                return Response(
+                    {
+                        "error": f"No author in system for user: {request.user}. Generate an author first."
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
             if request.data.get("tags"):
                 tags = TagUtils(request.data["tags"])
                 request.data["tags"] = None # Emptying the key-value pair to remove duplicate values.
