@@ -7,7 +7,7 @@ from .models import Blog, Tag
 class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
-        fields = ['id', 'title', 'body', 'published', 'author']
+        fields = ['id', 'title', 'body', 'published', 'author', 'tags']
 
 
 class BlogPostSerializer(serializers.ModelSerializer):

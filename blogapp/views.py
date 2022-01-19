@@ -10,6 +10,7 @@ from userapp.models import Author, User
 from userapp.serializers import AuthorSerializer
 from .models import Blog, Tag
 from .serializers import BlogPostSerializer, BlogSerializer, TagSerializer
+from .utils import TagUtils
 
 # Create your views here.
 
@@ -37,8 +38,13 @@ class BlogView(APIView):
         '''
         if request.user:
             author = Author.objects.filter(user=request.user).first()
-            print(author.__dict__)
+            # print(author.__dict__)
             request.data["author"] = AuthorSerializer(author).data.get('id')
+            if request.data.get("tags"):
+                    tags = TagUtils(request.data["tags"])
+                    request.data["tags"] = None
+
+                    request.data["tags"] = tags.resolve_tags()
 
             deserialized = BlogSerializer(data=request.data)
 
