@@ -27,6 +27,16 @@ A blog engine backend constructed in django restframework with custom user model
 4. A ```blog post``` can only be updated or deleted if ```request.user``` is either the owning user or a member of the staff.
 5. The list of all users can only be viewed/deleted if ```request.user``` is an administrator or a member of the staff.
 
+## Installed Custom Applications:
+
+1. Userapp:
+
+    Used for user registration and verification via author-generation.
+
+2. Blogapp:
+
+    Used to CRUD blog posts in/from the database.
+
 ### .env File Format:
 
 ```
