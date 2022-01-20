@@ -98,22 +98,21 @@ class BlogIndView(APIView):
         '''
         Get individual blog-post:
         '''
-        if request.user or not request.user:
-            try:
-                queryset = Blog.objects.get(pk=id)
-            except Blog.DoesNotExist:
-                return Response(
-                    {
-                        "error": f"Blog with ID #{id} does not exist."
-                    },
-                    status=status.HTTP_404_NOT_FOUND
-                )
-            serialized = BlogPostSerializer(queryset)
-
+        try:
+            queryset = Blog.objects.get(pk=id)
+        except Blog.DoesNotExist:
             return Response(
-                serialized.data,
-                status=status.HTTP_302_FOUND
+                {
+                    "error": f"Blog with ID #{id} does not exist."
+                },
+                status=status.HTTP_404_NOT_FOUND
             )
+        serialized = BlogPostSerializer(queryset)
+
+        return Response(
+            serialized.data,
+            status=status.HTTP_302_FOUND
+        )
 
     def put(self, request, id: int):
         '''
