@@ -32,6 +32,7 @@ class BlogView(APIView):
             status=status.HTTP_302_FOUND
         )
 
+
 class AddPostView(APIView):
     '''
     View to GET all blog-posts and POST a new blog-post:
@@ -54,17 +55,19 @@ class AddPostView(APIView):
                 )
             request.data["author"] = AuthorSerializer(author).data.get('id')
         except Author.DoesNotExist:
-                return Response(
-                    {
-                        "error": f"No author in system for user: {request.user}. Generate an author first."
-                    },
-                    status=status.HTTP_400_BAD_REQUEST
-                )
-        
+            return Response(
+                {
+                    "error": f"No author in system for user: {request.user}. Generate an author first."
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         if request.data.get("tags") is not None:
             tags = TagUtils(request.data["tags"])
-            request.data["tags"] = None # Emptying the key-value pair to remove duplicate values.
-            request.data["tags"] = tags.resolve_tags() # Replace the hashtags with their IDs.
+            # Emptying the key-value pair to remove duplicate values.
+            request.data["tags"] = None
+            # Replace the hashtags with their IDs.
+            request.data["tags"] = tags.resolve_tags()
 
         deserialized = BlogSerializer(data=request.data)
 
@@ -72,16 +75,16 @@ class AddPostView(APIView):
             deserialized.save()
 
             return Response(
-                    deserialized.data,
-                    status=status.HTTP_201_CREATED
-                )
+                deserialized.data,
+                status=status.HTTP_201_CREATED
+            )
         else:
             return Response(
-                    {
-                        "error": str(deserialized.errors)
-                    },
-                    status=status.HTTP_400_BAD_REQUEST
-                )
+                {
+                    "error": str(deserialized.errors)
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class BlogIndView(APIView):
@@ -181,5 +184,5 @@ class TagView(ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     lookup_field = 'id'
-    authentication_classes = [TokenAuthentication ]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]

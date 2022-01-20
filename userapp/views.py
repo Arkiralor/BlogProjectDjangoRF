@@ -1,5 +1,3 @@
-from distutils import errors
-from django.shortcuts import render
 from .models import Author, User
 from .serializers import AuthorSerializer, UserSerializer
 from rest_framework.views import APIView
@@ -137,14 +135,17 @@ class AuthorView(ModelViewSet):
 
 
 class UserLoginView(APIView):
+    '''
+    View to login a user and create their token:
+    '''
 
     def post(self, request):
         data = request.data
 
         username = data.get('username')
-        print(username)
+        # print(username)
         password = data.get('password')
-        print(password)
+        # print(password)
 
         user = User.objects.filter(username=username).first()
 
@@ -174,6 +175,9 @@ class UserLoginView(APIView):
 
 
 class UserLogoutView(APIView):
+    '''
+    View to logout user and destroy their token:
+    '''
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
