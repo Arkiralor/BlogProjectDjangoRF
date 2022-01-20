@@ -4,7 +4,6 @@ from .views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-# router.register('users', UserView)
 router.register('author', AuthorView)
 
 
@@ -14,5 +13,5 @@ urlpatterns = [
     path('author/generate/', GenerateAuthorView.as_view(), name='generate_author'),
     path('login/', UserLoginView.as_view(), name='user_login'),
     path('logout/', UserLogoutView.as_view(), name='user_logout'),
-    path('', include(router.urls))
+    path('authors/root', include(router.urls))
 ]
