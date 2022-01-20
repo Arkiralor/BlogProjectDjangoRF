@@ -8,7 +8,7 @@ router.register('hashtags', TagView)
 # Declare the paths here:
 
 urlpatterns = [
-    path('blog/post/all', BlogView.as_view(), name="blog_posts"),
-    path('blog/post/<int:id>', BlogIndView.as_view(), name="blog_ind_view"),
-    path('', include(router.urls))
+    path('post/all', BlogView.as_view(), name="blog_posts"),
+    path('post/<int:id>', BlogIndView.as_view(), name="blog_ind_view"),
+    path('hashtags/', include(router.urls))
 ]

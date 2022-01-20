@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from userapp.models import Author, User
 from userapp.serializers import AuthorSerializer
@@ -32,63 +32,63 @@ class BlogView(APIView):
             status=status.HTTP_302_FOUND
         )
 
+class AddPostView(APIView):
+    '''
+    View to GET all blog-posts and POST a new blog-post:
+    '''
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
         '''
         POST a new blog-post:
         '''
-        if request.user:
-            try:
-                author = Author.objects.filter(user=request.user).first()
-                if not author:
-                    return Response(
-                    {
-                        "error": f"No author in system for user: {request.user}. Generate an author first."
-                    },
-                    status=status.HTTP_400_BAD_REQUEST
-                )
-                request.data["author"] = AuthorSerializer(author).data.get('id')
-            except Author.DoesNotExist:
+        try:
+            author = Author.objects.filter(user=request.user).first()
+            if author is None:
                 return Response(
                     {
                         "error": f"No author in system for user: {request.user}. Generate an author first."
                     },
                     status=status.HTTP_400_BAD_REQUEST
                 )
-            if request.data.get("tags"):
-                tags = TagUtils(request.data["tags"])
-                request.data["tags"] = None # Emptying the key-value pair to remove duplicate values.
-                request.data["tags"] = tags.resolve_tags() # Replace the hashtags with their IDs.
-
-            deserialized = BlogSerializer(data=request.data)
-
-            if deserialized.is_valid():
-                deserialized.save()
-
+            request.data["author"] = AuthorSerializer(author).data.get('id')
+        except Author.DoesNotExist:
                 return Response(
+                    {
+                        "error": f"No author in system for user: {request.user}. Generate an author first."
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+        
+        if request.data.get("tags") is not None:
+            tags = TagUtils(request.data["tags"])
+            request.data["tags"] = None # Emptying the key-value pair to remove duplicate values.
+            request.data["tags"] = tags.resolve_tags() # Replace the hashtags with their IDs.
+
+        deserialized = BlogSerializer(data=request.data)
+
+        if deserialized.is_valid():
+            deserialized.save()
+
+            return Response(
                     deserialized.data,
                     status=status.HTTP_201_CREATED
                 )
-            else:
-                return Response(
+        else:
+            return Response(
                     {
                         "error": str(deserialized.errors)
                     },
                     status=status.HTTP_400_BAD_REQUEST
                 )
-        elif not request.user:
-            return Response(
-                {
-                    "error": "please login to add a new blog post."
-                },
-                status=status.HTTP_401_UNAUTHORIZED
-            )
 
 
 class BlogIndView(APIView):
     '''
     View to GET/PUT/DELETE individual blog-posts:
     '''
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request, id: int):
@@ -181,5 +181,5 @@ class TagView(ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     lookup_field = 'id'
-    authentication_classes = [BasicAuthentication, SessionAuthentication]
+    authentication_classes = [TokenAuthentication ]
     permission_classes = [IsAuthenticated]

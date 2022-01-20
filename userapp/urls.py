@@ -5,11 +5,14 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 # router.register('users', UserView)
-router.register('authors', AuthorView)
+router.register('author', AuthorView)
 
 
 urlpatterns = [
-    path('users/', UserView.as_view(), name="all_users"),
-    path('user/generate/', GenerateAuthorView.as_view(), name='generate_author'),
+    path('all/', GetUserView.as_view(), name="all_users"),
+    path('add/', AddUserView.as_view(), name="add_new_user"),
+    path('author/generate/', GenerateAuthorView.as_view(), name='generate_author'),
+    path('login/', UserLoginView.as_view(), name='user_login'),
+    path('logout/', UserLogoutView.as_view(), name='user_logout'),
     path('', include(router.urls))
 ]
