@@ -181,3 +181,5 @@ class TagView(ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     lookup_field = 'id'
+    authentication_classes = [BasicAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticated]
