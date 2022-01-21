@@ -5,7 +5,7 @@ from userapp.models import Author
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=128, unique=True)
 
     def __str__(self):
         representation = f"#{self.name}"

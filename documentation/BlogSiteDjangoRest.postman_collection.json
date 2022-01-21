@@ -1,0 +1,1713 @@
+{
+	"info": {
+		"_postman_id": "e9638627-5d20-4082-acde-5303c0949cad",
+		"name": "BlogSiteDjangoRest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Blog App",
+			"item": [
+				{
+					"name": "Get all blog posts.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/blog/post/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"post",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all blog posts.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/blog/post/all",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"blog",
+										"post",
+										"all"
+									]
+								}
+							},
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jan 2022 10:03:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2337"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Python in Today's World\",\n        \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim quam, eleifend at condimentum ac, malesuada ut nunc. Duis eu nulla pharetra, elementum ante sed, hendrerit mauris. Curabitur erat dui, scelerisque nec magna in, elementum ullamcorper est. Maecenas mollis arcu eget pretium congue. Sed et odio euismod, congue lectus nec, ornare arcu. Nunc vulputate ut massa id porta. Nullam porttitor justo vel lectus molestie aliquam. Vivamus nulla ligula, bibendum eget mattis quis, sodales non nunc. Mauris et ex eros. Duis pulvinar nisi quam, non suscipit mauris tincidunt quis. Pellentesque sed fringilla massa. Pellentesque pulvinar lorem eget elit vestibulum ullamcorper. Donec lacus ex, pellentesque non luctus sit amet, commodo vehicula leo. Quisque elit sem, placerat quis nulla et, venenatis ullamcorper purus. In eu ex diam. Sed varius massa eget augue facilisis, et sollicitudin enim vulputate.\\r\\n\\r\\nUt fermentum, enim malesuada accumsan bibendum, tortor enim vehicula eros, a mollis mauris lorem sit amet augue. Duis in tristique lorem. Nullam diam purus, pulvinar ac consectetur eget, vestibulum sed erat. Vestibulum et erat eu eros ultrices tincidunt. Vestibulum aliquet porttitor lorem, ac fermentum lectus pretium vitae. Duis eleifend, leo vel fringilla accumsan, nibh velit gravida enim, vel varius sapien libero quis odio. Morbi condimentum cursus nisl, ut pellentesque turpis varius eget. Sed porta finibus pulvinar. Nam volutpat sem sit amet ultrices accumsan.\\r\\n\\r\\nFusce finibus velit fringilla rhoncus efficitur. Vestibulum malesuada sapien ac orci porttitor, et scelerisque sapien malesuada. Nullam suscipit sollicitudin ipsum. Mauris egestas finibus neque non condimentum. Proin imperdiet, erat gravida placerat sollicitudin, augue dui venenatis odio, nec molestie nunc turpis nec felis. Donec eget nunc egestas, pretium erat a, porta nunc. Cras mi dolor, condimentum et molestie quis, semper sit amet eros. Suspendisse ac auctor turpis. Nunc facilisis a ex in pulvinar. Suspendisse porta urna interdum, ultrices purus ac, rutrum erat. Aliquam erat volutpat. Aenean volutpat euismod tristique. Etiam tincidunt posuere risus eget elementum. Etiam accumsan volutpat porttitor. Proin rutrum varius ligula eget ornare.\",\n        \"published\": \"2022-01-18\",\n        \"author\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Individual Blog Posts",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token b7cab42aba6ca55e2a99c4cb2c3338581b8ed6f8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/blog/post/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"post",
+								"8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Individual Blog Posts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/blog/post/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"blog",
+										"post",
+										"1"
+									]
+								}
+							},
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jan 2022 10:04:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2412"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"Python in Today's World\",\n    \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus enim quam, eleifend at condimentum ac, malesuada ut nunc. Duis eu nulla pharetra, elementum ante sed, hendrerit mauris. Curabitur erat dui, scelerisque nec magna in, elementum ullamcorper est. Maecenas mollis arcu eget pretium congue. Sed et odio euismod, congue lectus nec, ornare arcu. Nunc vulputate ut massa id porta. Nullam porttitor justo vel lectus molestie aliquam. Vivamus nulla ligula, bibendum eget mattis quis, sodales non nunc. Mauris et ex eros. Duis pulvinar nisi quam, non suscipit mauris tincidunt quis. Pellentesque sed fringilla massa. Pellentesque pulvinar lorem eget elit vestibulum ullamcorper. Donec lacus ex, pellentesque non luctus sit amet, commodo vehicula leo. Quisque elit sem, placerat quis nulla et, venenatis ullamcorper purus. In eu ex diam. Sed varius massa eget augue facilisis, et sollicitudin enim vulputate.\\r\\n\\r\\nUt fermentum, enim malesuada accumsan bibendum, tortor enim vehicula eros, a mollis mauris lorem sit amet augue. Duis in tristique lorem. Nullam diam purus, pulvinar ac consectetur eget, vestibulum sed erat. Vestibulum et erat eu eros ultrices tincidunt. Vestibulum aliquet porttitor lorem, ac fermentum lectus pretium vitae. Duis eleifend, leo vel fringilla accumsan, nibh velit gravida enim, vel varius sapien libero quis odio. Morbi condimentum cursus nisl, ut pellentesque turpis varius eget. Sed porta finibus pulvinar. Nam volutpat sem sit amet ultrices accumsan.\\r\\n\\r\\nFusce finibus velit fringilla rhoncus efficitur. Vestibulum malesuada sapien ac orci porttitor, et scelerisque sapien malesuada. Nullam suscipit sollicitudin ipsum. Mauris egestas finibus neque non condimentum. Proin imperdiet, erat gravida placerat sollicitudin, augue dui venenatis odio, nec molestie nunc turpis nec felis. Donec eget nunc egestas, pretium erat a, porta nunc. Cras mi dolor, condimentum et molestie quis, semper sit amet eros. Suspendisse ac auctor turpis. Nunc facilisis a ex in pulvinar. Suspendisse porta urna interdum, ultrices purus ac, rutrum erat. Aliquam erat volutpat. Aenean volutpat euismod tristique. Etiam tincidunt posuere risus eget elementum. Etiam accumsan volutpat porttitor. Proin rutrum varius ligula eget ornare.\",\n    \"published\": \"2022-01-18\",\n    \"added\": \"2022-01-18T10:00:56.983375Z\",\n    \"genre\": \"Non-Fiction\",\n    \"author\": 1,\n    \"tags\": [\n        2,\n        4,\n        5,\n        6\n    ]\n}"
+						},
+						{
+							"name": "Get Individual Blog Posts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "token f4d235bdc6499b8d09d1dca77603d6eaaea9563e",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/blog/post/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"blog",
+										"post",
+										"2"
+									]
+								}
+							},
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 07:42:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3402"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"title\": \"Test Blog 3\",\n    \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique orci non lorem porttitor, volutpat ultricies magna laoreet. Integer malesuada at nunc placerat maximus. Curabitur vulputate magna vitae mauris fringilla, et fringilla justo convallis. Vestibulum ultrices risus id purus viverra consequat. Morbi pretium, sem sit amet pretium ultrices, purus urna posuere risus, vitae elementum mi libero id sem. Quisque id malesuada odio. Curabitur sit amet augue ultricies erat elementum fermentum at vitae tellus. Cras condimentum sit amet nibh quis molestie. Etiam sit amet diam pretium, consequat orci in, interdum nunc. Vestibulum at egestas tortor. Praesent sodales tempus ex sit amet accumsan. Donec pulvinar arcu lacus, ut vestibulum orci ultricies sed. Quisque eget luctus ante. Curabitur rhoncus efficitur pellentesque. Duis faucibus mauris enim, nec vehicula elit sodales quis. Vivamus iaculis, arcu in lobortis elementum, ante augue porta tortor, et pharetra nibh nunc ac augue. Mauris tristique blandit dolor quis auctor. Donec sit amet venenatis metus, id efficitur magna. Curabitur magna diam, eleifend in justo id, consequat dapibus nisi. Maecenas suscipit, nisi at vehicula sollicitudin, sapien dui iaculis est, in iaculis nunc nulla eu lectus. Cras diam turpis, congue eu maximus vel, semper sit amet tortor. Vestibulum metus ante, sollicitudin a dolor id, porttitor vehicula nulla. Etiam fermentum sagittis arcu vel fringilla. Nulla facilisi. Proin odio dui, euismod vitae tortor vel, cursus scelerisque tellus. Praesent pellentesque sed elit vel feugiat. Nulla eleifend est ornare tellus vestibulum malesuada. Proin magna leo, ultrices sed rutrum ac, rhoncus eu nibh. Aenean rhoncus nisi eu risus feugiat, nec tincidunt lacus congue. Aliquam dictum id erat non consequat. In blandit mi dui, vel tempor purus commodo ultrices. Nam luctus sit amet nulla at fermentum. Pellentesque vehicula sem eget massa lobortis, sed tempor nibh mattis. Vivamus eu rutrum eros, eu venenatis dui. Donec iaculis lacus tincidunt mi porta, sed viverra quam dignissim. Maecenas ac mauris ligula. Nullam sapien magna, molestie ut iaculis in, aliquam et tortor. Pellentesque porta euismod accumsan. Suspendisse tincidunt at est in maximus. Mauris a elit nulla. Aenean fringilla egestas velit, nec pretium nisi venenatis ut. Nulla tincidunt suscipit felis non commodo. Nulla congue quis ex nec aliquam. Integer blandit, mauris in convallis molestie, erat enim condimentum mi, id aliquet odio tellus sed sem. Ut eros quam, iaculis vel nibh eu, tincidunt varius urna. Nullam commodo rhoncus placerat. Donec viverra, mauris eu luctus varius, metus massa aliquam quam, nec suscipit neque sapien a dui. Etiam aliquet varius semper. Proin posuere est at eros sollicitudin gravida. Sed eu fringilla turpis, at mollis tortor. Morbi risus ipsum, ullamcorper sit amet facilisis vel, laoreet nec nisi. Sed suscipit tristique tortor, ac congue neque. Sed augue ex, pellentesque eu odio eu, dapibus lacinia neque. Duis sed feugiat dui, luctus facilisis orci. Aliquam eleifend scelerisque libero, eu molestie erat mollis fermentum. Donec in ligula pharetra, condimentum felis vel, maximus dolor. Proin sodales diam erat, at varius lectus blandit in. Vestibulum ac fermentum ex.\",\n    \"published\": \"2022-01-19\",\n    \"added\": \"2022-01-19T12:45:23.784889+05:30\",\n    \"genre\": \"\",\n    \"author\": 2,\n    \"tags\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Add New Blog Post",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token b7cab42aba6ca55e2a99c4cb2c3338581b8ed6f8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Twinkle Twinkle Little Star 3\",\r\n    \"body\" : \"Twinkle Twinkle Little Star; How I wonder what you are.\",\r\n    \"genre\": \"Poetry\",\r\n    \"tags\": [\r\n        \"#fiction\",\r\n        \"#poetry\",\r\n        \"#childrens\"\r\n    ]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/blog/post/new",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"post",
+								"new"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Invalid credentials.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"The Age of Aggression\",\r\n    \"body\" : \"We drink to our youth, for the days come and gone\\nFor the age of aggression is just about done\\nWe'll drive out the Stormcloaks and restore what we own\\nWith our blood and our steel we will take back our home\\nDown with Ulfric, the killer of kings\\nOn the day of your death we will drink and we'll sing\\n\\nWe're the children of Skyrim, and we fight all our lives\\nAnd when Sovngarde beckons everyone of us dies\\nBut this land is ours and we'll see it whiped clean\\nOf the scourge that has sullied our hopes and our dreams\\n\\nDown with Ulfric, the killer of kings\\nOn the day of your death we will drink and we'll sing\\nWe're the children of Skyrim, and we fight all our lives\\nAnd when Sovngarde beckons everyone of us dies\\n\\nWe drink to our youth, for the days come and gone\\nFor the Age of Aggression is just about done\",\r\n    \"genre\": \"poetry\",\r\n    \"tags\": [\r\n        \"#fiction\",\r\n        \"#poetry\",\r\n        \"#skyrim\",\r\n        \"#nordic\"\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/blog/post/all",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"blog",
+										"post",
+										"all"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 19 Jan 2022 15:06:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Invalid username/password.\"\n}"
+						},
+						{
+							"name": "No Author for User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Twinkle Twinkle Little Star 2\",\r\n    \"body\" : \"Twinkle Twinkle Little Star; How I wonder what you are.\",\r\n    \"genre\": \"poetry\",\r\n    \"tags\": [\r\n        \"#fiction\",\r\n        \"#poetry\",\r\n        \"#childrens\"\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/blog/post/all",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"blog",
+										"post",
+										"all"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 19 Jan 2022 19:16:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"No author in system for user: testuser3. Generate an author first.\"\n}"
+						},
+						{
+							"name": "Add New Blog Post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "token b7cab42aba6ca55e2a99c4cb2c3338581b8ed6f8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Twinkle Twinkle Little Star 3\",\r\n    \"body\" : \"Twinkle Twinkle Little Star; How I wonder what you are.\",\r\n    \"genre\": \"Poetry\",\r\n    \"tags\": [\r\n        \"#fiction\",\r\n        \"#poetry\",\r\n        \"#childrens\"\r\n    ]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/blog/post/new",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"blog",
+										"post",
+										"new"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 17:30:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 8,\n    \"title\": \"Twinkle Twinkle Little Star 3\",\n    \"body\": \"Twinkle Twinkle Little Star; How I wonder what you are.\",\n    \"published\": \"2022-01-21\",\n    \"author\": 3,\n    \"tags\": [\n        1,\n        4,\n        7\n    ],\n    \"genre\": \"Poetry\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all Hashtags in System",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/hashtags",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"hashtags"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all Hashtags in System",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/hashtags",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"hashtags"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 19 Jan 2022 12:06:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "333"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"blog\"\n    },\n    {\n        \"name\": \"dailydiary\"\n    },\n    {\n        \"name\": \"guwahati\"\n    },\n    {\n        \"name\": \"techtoday\"\n    },\n    {\n        \"name\": \"python\"\n    },\n    {\n        \"name\": \"fiction\"\n    },\n    {\n        \"name\": \"nonfiction\"\n    },\n    {\n        \"name\": \"india\"\n    },\n    {\n        \"name\": \"lady\"\n    },\n    {\n        \"name\": \"tag1\"\n    },\n    {\n        \"name\": \"tag2\"\n    },\n    {\n        \"name\": \"tag3\"\n    },\n    {\n        \"name\": \"tag4\"\n    },\n    {\n        \"name\": \"tag5\"\n    },\n    {\n        \"name\": \"tag6\"\n    },\n    {\n        \"name\": \"tag7\"\n    },\n    {\n        \"name\": \"tag8\"\n    },\n    {\n        \"name\": \"tag9\"\n    },\n    {\n        \"name\": \"tag10\"\n    }\n]"
+						},
+						{
+							"name": "Get all Hashtags in System",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/blog/hashtags/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"blog",
+										"hashtags",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 07:43:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"hashtags\": \"http://localhost:8000/blog/hashtags/hashtags/\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add New Hashtag to System",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token b7cab42aba6ca55e2a99c4cb2c3338581b8ed6f8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"testtag2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/blog/hashtags/hashtags/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"hashtags",
+								"hashtags",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add New Hashtag to System",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "token b7cab42aba6ca55e2a99c4cb2c3338581b8ed6f8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"testtag2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/blog/hashtags/hashtags/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"blog",
+										"hashtags",
+										"hashtags",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 17:35:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "19"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"testtag2\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Individual Hashtag by ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token b7cab42aba6ca55e2a99c4cb2c3338581b8ed6f8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/blog/hashtags/hashtags/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"blog",
+								"hashtags",
+								"hashtags",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Individual Hashtag by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "token b7cab42aba6ca55e2a99c4cb2c3338581b8ed6f8",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/blog/hashtags/hashtags/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"blog",
+										"hashtags",
+										"hashtags",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 17:36:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "18"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"fiction\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User App",
+			"item": [
+				{
+					"name": "Get all Users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token b7cab42aba6ca55e2a99c4cb2c3338581b8ed6f8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/user/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Admin lists all Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "token f4d235bdc6499b8d09d1dca77603d6eaaea9563e",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/user/all",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"all"
+									]
+								}
+							},
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 06:26:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1084"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"password\": \"pbkdf2_sha256$320000$I9XAjo7OUe7aMomcUSZ99m$34L3VL8J0D+TOAmhbis5VM25lqWqcNiXUbz2jqofNJs=\",\n        \"last_login\": \"2022-01-18T15:27:55+05:30\",\n        \"is_superuser\": true,\n        \"username\": \"admin\",\n        \"first_name\": \"Admin\",\n        \"last_name\": \"Superuser\",\n        \"email\": \"admin@admin.com\",\n        \"is_staff\": true,\n        \"is_active\": true,\n        \"date_joined\": \"2022-01-18T15:27:30+05:30\",\n        \"groups\": [],\n        \"user_permissions\": []\n    },\n    {\n        \"id\": 3,\n        \"password\": \"pbkdf2_sha256$320000$H7y15pIz0II8Yb4r024jsX$B2LE3T8X1//r27sIyiR+tUmJrP1cRbpz/AvtUbrp/8U=\",\n        \"last_login\": null,\n        \"is_superuser\": true,\n        \"username\": \"prithoo\",\n        \"first_name\": \"Prithoo\",\n        \"last_name\": \"Medhi\",\n        \"email\": \"prithoo@admin.com\",\n        \"is_staff\": true,\n        \"is_active\": true,\n        \"date_joined\": \"2022-01-18T17:48:41.451868+05:30\",\n        \"groups\": [],\n        \"user_permissions\": []\n    },\n    {\n        \"id\": 4,\n        \"password\": \"pbkdf2_sha256$320000$imTrzqkZ5Uc0nfjd34PeJd$69ifnAbGhnq0GRqoOacY6lzLix+d5hboF5YWqePGFeY=\",\n        \"last_login\": null,\n        \"is_superuser\": false,\n        \"username\": \"testuser4\",\n        \"first_name\": \"Test\",\n        \"last_name\": \"User4\",\n        \"email\": \"test4@user.com\",\n        \"is_staff\": false,\n        \"is_active\": true,\n        \"date_joined\": \"2022-01-21T11:43:22.360504+05:30\",\n        \"groups\": [],\n        \"user_permissions\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Post new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"password\",\n    \"is_superuser\": true,\n    \"username\": \"testuser5\",\n    \"first_name\": \"Test\",\n    \"last_name\": \"User5\",\n    \"email\": \"test5@user.com\",\n    \"is_staff\": true,\n    \"is_active\": true,\n    \"groups\": [],\n    \"user_permissions\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/user/add/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"add",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New User Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"password\",\n    \"is_superuser\": false,\n    \"username\": \"testuser4\",\n    \"first_name\": \"Test\",\n    \"last_name\": \"User4\",\n    \"email\": \"test4@user.com\",\n    \"is_staff\": false,\n    \"is_active\": true,\n    \"groups\": [],\n    \"user_permissions\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/user/add/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"add",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 06:13:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "38"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": \"User: testuser4 created.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Generate New Author from User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 0ed6b196829daee60027b60e334628f09fd2abe6",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/user/author/generate/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"author",
+								"generate",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Author for user TestUser4",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "token 0ed6b196829daee60027b60e334628f09fd2abe6",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/user/author/generate/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"author",
+										"generate",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 06:24:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "122"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": \"Author: {'id': 3, 'date_joined': '2022-01-21T11:54:17.587695+05:30', 'user': 4} created for User: testuser4.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Authors",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/user/generate/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"generate",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Authors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/user/generate/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"generate",
+										""
+									]
+								}
+							},
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 18 Jan 2022 16:05:23 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.3"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "135"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"date_joined\": \"2022-01-18T20:42:31.464494+05:30\",\n        \"user\": 2\n    },\n    {\n        \"id\": 3,\n        \"date_joined\": \"2022-01-18T20:44:32.089521+05:30\",\n        \"user\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/user/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "TestUser4 Logged In",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"testuser4\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/user/login/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 06:16:34 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"d16847234d78bae5cbb984e5b59fe491fe0f3220\"\n}"
+						},
+						{
+							"name": "Admin Logs In",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/user/login/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 06:25:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"f4d235bdc6499b8d09d1dca77603d6eaaea9563e\"\n}"
+						}
+					]
+				},
+				{
+					"name": "User Logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token d16847234d78bae5cbb984e5b59fe491fe0f3220",
+								"description": "user token",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/user/logout/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "TestUser4 Logged Out",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "token d16847234d78bae5cbb984e5b59fe491fe0f3220",
+										"description": "user token",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/user/logout/",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"logout",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 06:20:28 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "25"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": \"Logged Out.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Author API Root Test",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token f4d235bdc6499b8d09d1dca77603d6eaaea9563e",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/user/authors/root",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"authors",
+								"root"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Author API Test",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "token f4d235bdc6499b8d09d1dca77603d6eaaea9563e",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:8000/user/authors/root",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"authors",
+										"root"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 21 Jan 2022 06:30:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"author\": \"http://localhost:8000/user/authors/rootauthor/\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
