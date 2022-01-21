@@ -1,10 +1,15 @@
 # Blog Engine in Django Restframework 
-### (Work in Progress)
-
 
 <p>
 A blog engine backend constructed in django restframework with custom user models and login.
 </p>
+
+### Details:
+
+1. __Type__: REST API
+2. __Authentication__: Token Authetication
+3. __Types of Users__: Superuser, Staff, User
+4. __Timezone__: Asia/Kolkata (UTC +05:30hrs)
 
 ## Setup:
 
@@ -29,11 +34,11 @@ A blog engine backend constructed in django restframework with custom user model
 
 ## Installed Custom Applications:
 
-1. Userapp:
+1. [Userapp](https://github.com/Arkiralor/BlogProjectDjangoRF/tree/master/userapp):
 
     Used for user registration and verification via author-generation.
 
-2. Blogapp:
+2. [Blogapp](https://github.com/Arkiralor/BlogProjectDjangoRF/tree/master/blogapp):
 
     Used to CRUD blog posts in/from the database.
 

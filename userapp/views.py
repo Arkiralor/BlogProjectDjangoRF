@@ -1,5 +1,5 @@
 from .models import Author, User
-from .serializers import AuthorSerializer, UserSerializer
+from .serializers import AuthorSerializer, UserSerializer, UserAdminSerializer
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
@@ -14,7 +14,7 @@ from rest_framework.authtoken.models import Token
 
 class GetUserView(APIView):
     '''
-    Class to GET/POST model User:
+    Class to GET all model User:
     '''
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
@@ -51,6 +51,7 @@ class AddUserView(APIView):
         '''
         data = request.data
         data['password'] = make_password(data.get('password'))
+        data['is_staff'], data['is_superuser'] = False, False
 
         deserialized = UserSerializer(data=data)
 
@@ -76,7 +77,7 @@ class GenerateAuthorView(APIView):
     Class to GET/POST Authors generated from users:
     '''
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated, IsAdminUser]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         '''
@@ -190,3 +191,68 @@ class UserLogoutView(APIView):
                 "success": "Logged Out."
             }
         )
+
+class SetSuperView(APIView):
+    '''
+    Class to set superusers:
+    '''
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAdminUser]
+
+    def post(self, request, id: int):
+        try:
+            user = User.objects.get(pk=id)
+            if user.is_superuser:
+                return Response(
+                    {
+                        "error": "user is already superuser."
+                    },
+                    status = status.HTTP_200_OK
+                )
+            user.is_superuser = True
+            user.save()
+            serialized = UserAdminSerializer(user)
+            return Response(
+                serialized.data,
+                status = status.HTTP_200_OK
+            )
+        except User.DoesNotExist:
+            return Response(
+                {
+                    "error": "User does not exist"
+                },
+                status = status.HTTP_404_NOT_FOUND
+            )
+
+
+class SetStaffView(APIView):
+    '''
+    Class to set superusers:
+    '''
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAdminUser]
+
+    def post(self, request, id: int):
+        try:
+            user = User.objects.get(pk=id)
+            if user.is_staff:
+                return Response(
+                    {
+                        "error": "user is already staff."
+                    },
+                    status = status.HTTP_200_OK
+                )
+            user.is_staff = True
+            user.save()
+            serialized = UserAdminSerializer(user)
+            return Response(
+                serialized.data,
+                status = status.HTTP_200_OK
+            )
+        except User.DoesNotExist:
+            return Response(
+                {
+                    "error": "User does not exist"
+                },
+                status = status.HTTP_404_NOT_FOUND
+            )
