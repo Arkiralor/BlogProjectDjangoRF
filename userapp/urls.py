@@ -4,7 +4,7 @@ from .views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('author', AuthorView, basename='author_views')
+router.register('root', AuthorView, basename='author_views')
 
 
 urlpatterns = [
@@ -15,5 +15,5 @@ urlpatterns = [
     path('logout/', UserLogoutView.as_view(), name='user_logout'),
     path('<int:id>/setsuper/', SetSuperView.as_view(), name='set_super'),
     path('<int:id>/setstaff/', SetStaffView.as_view(), name='set_staff'),
-    path('authors/root', include(router.urls))
+    path('author/all/', include(router.urls))
 ]

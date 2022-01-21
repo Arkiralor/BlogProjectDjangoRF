@@ -119,7 +119,7 @@ class BlogIndView(APIView):
         Update individual blog-post:
         '''
         blog_post = Blog.objects.get(pk=id)
-        if request.user == blog_post.user or request.user.is_superuser:
+        if request.user == blog_post.author.user or request.user.is_superuser:
             update = request.data
 
             updated = BlogPostSerializer(blog_post, data=update)
@@ -137,7 +137,7 @@ class BlogIndView(APIView):
                     },
                     status=status.HTTP_400_BAD_REQUEST
                 )
-        elif request.user != blog_post.user or not request.user.is_superuser:
+        elif request.user != blog_post.author.user or not request.user.is_superuser:
             return Response(
                 {
                     "error": f"you do not have permission to execute this ({__name__}) action."
@@ -153,7 +153,7 @@ class BlogIndView(APIView):
             blog_post = Blog.objects.get(pk=id)
             serialized = BlogPostSerializer(blog_post)
 
-            if request.user == blog_post.user or request.user.is_superuser:
+            if request.user == blog_post.author.user or request.user.is_superuser:
                 blog_post.delete()
 
                 return Response(
