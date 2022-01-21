@@ -35,7 +35,7 @@ class BlogView(APIView):
 
 class AddPostView(APIView):
     '''
-    View to GET all blog-posts and POST a new blog-post:
+    View to POST a new blog-post:
     '''
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
@@ -73,7 +73,6 @@ class AddPostView(APIView):
 
         if deserialized.is_valid():
             deserialized.save()
-
             return Response(
                 deserialized.data,
                 status=status.HTTP_201_CREATED
@@ -137,7 +136,7 @@ class BlogIndView(APIView):
                     },
                     status=status.HTTP_400_BAD_REQUEST
                 )
-        elif request.user != blog_post.author.user or not request.user.is_superuser:
+        elif request.user != blog_post.author.user and not request.user.is_superuser:
             return Response(
                 {
                     "error": f"you do not have permission to execute this ({__name__}) action."
@@ -160,7 +159,7 @@ class BlogIndView(APIView):
                     serialized.data,
                     status=status.HTTP_410_GONE
                 )
-            elif request.user != blog_post.user or not request.user.is_superuser:
+            elif request.user != blog_post.user and not request.user.is_superuser:
                 return Response(
                     {
                         "error": f"you do not have permission to execute this ({__name__}) action."

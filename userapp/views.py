@@ -45,14 +45,17 @@ class AddUserView(APIView):
     '''
     Register a new user.
     '''
+
     def post(self, request):
         '''
         POST a new user to the system:
         '''
         data = request.data
         data['password'] = make_password(data.get('password'))
-        data['is_staff'], data['is_superuser'] = False, False
-
+        if 'is_staff' in data.keys():
+            data['is_staff'] = False
+        if 'is_superuser' in data.keys():
+            data['is_superuser'] = False
         deserialized = UserSerializer(data=data)
 
         if deserialized.is_valid():
@@ -144,10 +147,7 @@ class UserLoginView(APIView):
         data = request.data
 
         username = data.get('username')
-        # print(username)
         password = data.get('password')
-        # print(password)
-
         user = User.objects.filter(username=username).first()
 
         if user is None:
@@ -192,6 +192,7 @@ class UserLogoutView(APIView):
             }
         )
 
+
 class SetSuperView(APIView):
     '''
     Class to set superusers:
@@ -207,21 +208,21 @@ class SetSuperView(APIView):
                     {
                         "error": "user is already superuser."
                     },
-                    status = status.HTTP_200_OK
+                    status=status.HTTP_200_OK
                 )
             user.is_superuser = True
             user.save()
             serialized = UserAdminSerializer(user)
             return Response(
                 serialized.data,
-                status = status.HTTP_200_OK
+                status=status.HTTP_200_OK
             )
         except User.DoesNotExist:
             return Response(
                 {
                     "error": "User does not exist"
                 },
-                status = status.HTTP_404_NOT_FOUND
+                status=status.HTTP_404_NOT_FOUND
             )
 
 
@@ -240,19 +241,19 @@ class SetStaffView(APIView):
                     {
                         "error": "user is already staff."
                     },
-                    status = status.HTTP_200_OK
+                    status=status.HTTP_200_OK
                 )
             user.is_staff = True
             user.save()
             serialized = UserAdminSerializer(user)
             return Response(
                 serialized.data,
-                status = status.HTTP_200_OK
+                status=status.HTTP_200_OK
             )
         except User.DoesNotExist:
             return Response(
                 {
                     "error": "User does not exist"
                 },
-                status = status.HTTP_404_NOT_FOUND
+                status=status.HTTP_404_NOT_FOUND
             )
