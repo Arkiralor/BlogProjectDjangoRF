@@ -256,3 +256,54 @@ class SetStaffView(APIView):
                 },
                 status = status.HTTP_404_NOT_FOUND
             )
+
+
+class UserGetView(APIView):
+    '''
+    API to get/delete details of a single user:
+    '''
+
+    def get(self, request, id:int):
+        '''
+        Get a single user via ID:
+        '''
+        user_data = User.objects.get(pk=id)
+
+        if request.user == user_data or request.user.is_staff:
+            serialized = UserAdminSerializer(user_data)
+            return Response(
+                serialized.data,
+                status=status.HTTP_200_OK
+            )
+        else:
+            user_data = None
+            return Response(
+                {
+                    "error": "Unauthorised access"
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+    def delete(self, request, id:int):
+        '''
+        Delete a single user via ID:
+        '''
+        user_data = User.objects.get(pk=id)
+
+        if request.user == user_data or request.user.is_staff:
+            serialized = UserAdminSerializer(user_data)
+            user_data.delete()
+            return Response(
+                serialized.data,
+                status=status.HTTP_204_NO_CONTENT
+            )
+        else:
+            user_data = None
+            return Response(
+                {
+                    "error": "Unauthorised access"
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+

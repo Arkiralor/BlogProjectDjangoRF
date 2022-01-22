@@ -13,6 +13,7 @@ urlpatterns = [
     path('author/generate/', GenerateAuthorView.as_view(), name='generate_author'),
     path('login/', UserLoginView.as_view(), name='user_login'),
     path('logout/', UserLogoutView.as_view(), name='user_logout'),
+    path('<int:id>/', UserGetView.as_view(), name='get_delete_user'),
     path('<int:id>/setsuper/', SetSuperView.as_view(), name='set_super'),
     path('<int:id>/setstaff/', SetStaffView.as_view(), name='set_staff'),
     path('author/all/', include(router.urls))
