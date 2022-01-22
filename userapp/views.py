@@ -255,7 +255,6 @@ class SetStaffView(APIView):
                 {
                     "error": "User does not exist"
                 },
-<<<<<<< HEAD
                 status = status.HTTP_404_NOT_FOUND
             )
 
@@ -309,7 +308,3 @@ class UserGetView(APIView):
             )
 
 
-=======
-                status=status.HTTP_404_NOT_FOUND
-            )
->>>>>>> 85eae353a911beb27f392952e0566949b003820d
