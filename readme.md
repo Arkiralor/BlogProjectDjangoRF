@@ -1,8 +1,20 @@
 # Blog Engine in Django Restframework 
 
 <p>
-A blog engine backend constructed in django restframework with custom user models and login.
+A blog-engine Rest API constructed in django restframework with custom user models and login.
 </p>
+
+### Definition:
+
+<p>
+A blogg-engine is a a software or tool which let’s one create and manage a blog or website.
+
+Conventional websites are a collection of web pages that are accessible from a website. A blog differs from a website in that it is generally managed using a blogging platform which stores your content, media, files, links and all other necessary things required for the operation and working of your blogs which are created by the users of the site and not the administrators.
+
+Social Media Websites can be considered the technological descendants of the original blog-engine concept, popularized in the early 2000s.
+</p>
+
+__Source__: [cultofweb.com](https://cultofweb.com/blog/blogging-platforms-compared/)
 
 ### Details:
 
@@ -11,7 +23,7 @@ A blog engine backend constructed in django restframework with custom user model
 3. __Types of Users__: Superuser, Staff, User
 4. __Timezone__: Asia/Kolkata (UTC +05:30hrs)
 
-## Setup:
+## Development Environment Setup:
 
 1. Create a ```virtualenv``` named such as ```env``` and switch to it.
 2. Run: ```python -m pip install --upgrade pip``` to upgrade the ```PythonPackageManager``` (just to save you an hour's worth of headache 5 minutes later).

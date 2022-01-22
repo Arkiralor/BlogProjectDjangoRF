@@ -12,7 +12,7 @@ class TagUtils:
         Initialization method for the class:
         '''
 
-        # Reinitializing these to so the previously passed list is erased,
+        # Reinitializing these so that the previously passed list is erased,
         # since the __init__ method is being called on the same class-object
         # in the calling function, using a loop.
         self.TAG_LIST :List[str] = []
