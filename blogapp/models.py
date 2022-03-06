@@ -45,7 +45,7 @@ class Blog(models.Model):
     def get_summary(self):
         tag_list = []
         title = self.title
-        body = self.body[:100]
+        body = self.body[:100] + '...'
         genre = self.genre
         tags = self.tags.all()
         for tag in tags:
