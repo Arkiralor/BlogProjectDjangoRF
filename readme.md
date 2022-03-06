@@ -57,14 +57,23 @@ __Source__: [cultofweb.com](https://cultofweb.com/blog/blogging-platforms-compar
 
 ### .env File Format
 
-``` ENV
-SECRET_KEY = ''
-DATABASE = ''
-USER = ''
-PASSWORD = ''
-HOST = ''
-PORT = 
-DEBUG = 
+``` 
+## Website Encryption:
+SECRET_KEY = ' '
+
+## Database Settings:
+DATABASE = ' '
+USER = ' '
+PASSWORD = ' '
+HOST = ' '
+PORT =  
+
+## Site Settings:
+DEBUG = True/False
+LANGUAGE_CODE = ' '
+TIME_ZONE = ' '
+USE_I18N = True/False
+USE_TZ = True /False
 ```
 
 ### Documentation:
