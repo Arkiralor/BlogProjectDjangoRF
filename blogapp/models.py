@@ -42,6 +42,24 @@ class Blog(models.Model):
         return representation
 
     @property
+    def get_summary(self):
+        tag_list = []
+        title = self.title
+        body = self.body[:100]
+        genre = self.genre
+        tags = self.tags.all()
+        for tag in tags:
+            tag_list.append(tag.name)
+        
+        summary = {
+            'title': title,
+            'body': body,
+            'genre': genre,
+            'tags': tag_list
+        }
+        return summary
+
+    @property
     def absolute_url(self):
         self_url = f"/blog/post/{self.id}"
         return self_url
