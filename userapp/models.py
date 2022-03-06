@@ -12,3 +12,32 @@ class Author(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    @property
+    def get_email(self):
+        return self.user.email
+    
+    @property
+    def get_username(self):
+        return self.user.username
+
+    @property
+    def get_user_id(self):
+        return self.user.id
+
+    @property
+    def get_function(self):
+        user_id = self.user.id
+        username = self.user.username
+        is_staff = self.user.is_staff
+        is_superuser = self.user.is_superuser
+        rep_dict = {
+            'id': user_id,
+            'username': username,
+            'function':{
+                'is_staff': is_staff,
+                'is_superuser': is_superuser
+            }
+        }
+        return rep_dict
+
