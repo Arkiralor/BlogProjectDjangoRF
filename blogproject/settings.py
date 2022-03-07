@@ -21,39 +21,52 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = environ['SECRET_KEY']
+SECRET_KEY:str = environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(environ['DEBUG'])
+DEBUG:bool = bool(environ['DEBUG'])
 
 ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles'
+]
+
+THIRD_PARTY_APPS = [
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework.authtoken'
+]
+
+CUSTOM_APPS = [
     'blogapp',
     'userapp'
 ]
 
-MIDDLEWARE = [
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
+
+DJANGO_MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 ]
+
+THIRD_PARTY_MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware'
+]
+
+MIDDLEWARE = DJANGO_MIDDLEWARE + THIRD_PARTY_MIDDLEWARE
 
 ROOT_URLCONF = 'blogproject.urls'
 
@@ -75,11 +88,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blogproject.wsgi.application'
 ASGI_APPLICATION = 'blogproject.asgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 
 DATABASES = {
     'default': {
@@ -119,13 +127,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE:str = environ["LANGUAGE_CODE"]
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE:str = environ["TIME_ZONE"]
 
-USE_I18N = True
+USE_I18N:bool = bool(environ["USE_I18N"])
 
-USE_TZ = True
+USE_TZ:bool = bool(environ["USE_TZ"])
 
 
 # Static files (CSS, JavaScript, Images)
