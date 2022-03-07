@@ -3,6 +3,7 @@ from .models import Blog, Tag
 
 # Register your models here.
 
+
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'published', 'added')
