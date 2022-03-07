@@ -26,7 +26,7 @@ class Blog(models.Model):
     '''
     title = models.CharField(max_length=128)
     body = models.TextField()
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="written_by")
     published = models.DateField(auto_now_add=True)
     added = models.DateTimeField(auto_now_add=True)
     genre = models.CharField(max_length=64, choices=GENRE_CHOICES)
@@ -42,19 +42,28 @@ class Blog(models.Model):
         return representation
 
     @property
+    def get_author(self):
+        return self.author.user.username
+
+    @property
+    def get_tags(self):
+        tag_list = []
+        tags = self.tags.all()
+        for tag in tags:
+            tag_list.append(tag.name)
+        return tag_list
+
+    @property
     def get_summary(self):
         tag_list = []
-        title = self.title
-        body = self.body[:100] + '...'
-        genre = self.genre
         tags = self.tags.all()
         for tag in tags:
             tag_list.append(tag.name)
         
         summary = {
-            'title': title,
-            'body': body,
-            'genre': genre,
+            'title': self.title,
+            'body': self.body[:100] + '...',
+            'genre': self.genre,
             'tags': tag_list
         }
         return summary
