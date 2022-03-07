@@ -36,14 +36,17 @@ __Source__: [cultofweb.com](https://cultofweb.com/blog/blogging-platforms-compar
 3. Run: ```pip install -r requirements.txt```
 4. Run: [
     ```chmod +x run.sh``` ,
-    ```chmod +x migrate.sh```
+    ```chmod +x migrate.sh```,
+    ```chmod +x shell.sh```
     ]
 5. Create the ```.env``` file and fill the values as per the format given below.
 6. Run: ```./migrate.sh```
 7. Run: ```python manage.py createsuperuser```
 
     7.1. Enter the superuser credentials as required.
-8. Run: ```./run.sh```
+8. Run: ```./run.sh``` to run the server.
+
+    8.1. Run: ```./shell.sh``` to run the shell when required.
 
 ## Installed Custom Applications
 
