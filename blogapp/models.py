@@ -3,6 +3,7 @@ from django.db import models
 from blogapp.model_choices import GENRE_CHOICES
 from userapp.models import Author
 
+
 class Tag(models.Model):
     '''
     Table for hastags used in individual blog posts.
@@ -13,7 +14,6 @@ class Tag(models.Model):
         ordering = ["name"]
         verbose_name = "Hashtag"
         verbose_name_plural = "Hashtags"
-
 
     def __str__(self):
         representation = f"#{self.name}"
@@ -26,7 +26,8 @@ class Blog(models.Model):
     '''
     title = models.CharField(max_length=128)
     body = models.TextField()
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name="written_by")
+    author = models.ForeignKey(
+        Author, on_delete=models.CASCADE, related_name="written_by")
     published = models.DateField(auto_now_add=True)
     added = models.DateTimeField(auto_now_add=True)
     genre = models.CharField(max_length=64, choices=GENRE_CHOICES)
@@ -59,7 +60,7 @@ class Blog(models.Model):
         tags = self.tags.all()
         for tag in tags:
             tag_list.append(tag.name)
-        
+
         summary = {
             'title': self.title,
             'body': self.body[:100] + '...',
@@ -72,5 +73,3 @@ class Blog(models.Model):
     def absolute_url(self):
         self_url = f"/blog/post/{self.id}"
         return self_url
-        
-    

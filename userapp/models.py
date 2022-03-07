@@ -3,8 +3,10 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
+
 class User(AbstractUser):
     pass
+
 
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -12,11 +14,11 @@ class Author(models.Model):
 
     def __str__(self):
         return self.user.username
-    
+
     @property
     def get_email(self):
         return self.user.email
-    
+
     @property
     def get_username(self):
         return self.user.username
@@ -34,10 +36,9 @@ class Author(models.Model):
         rep_dict = {
             'id': user_id,
             'username': username,
-            'function':{
+            'function': {
                 'is_staff': is_staff,
                 'is_superuser': is_superuser
             }
         }
         return rep_dict
-

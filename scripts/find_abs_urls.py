@@ -1,5 +1,6 @@
 from blogapp.models import Blog
 
+
 def main():
     posts = Blog.objects.all()
 
@@ -7,5 +8,5 @@ def main():
 
     for post in posts:
         url_list.append(post.absolute_url)
-    
+
     print(url_list)
