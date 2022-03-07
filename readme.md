@@ -46,7 +46,7 @@ __Source__: [cultofweb.com](https://cultofweb.com/blog/blogging-platforms-compar
     7.1. Enter the superuser credentials as required.
 8. Run: ```./run.sh``` to run the server.
 
-    8.1. Run: ```./shell.sh``` to run the shell when required.
+    8.1. Run: ```./shell.sh``` to run the ```Django Shell``` when required.
 
 ## Installed Custom Applications
 
@@ -60,7 +60,7 @@ __Source__: [cultofweb.com](https://cultofweb.com/blog/blogging-platforms-compar
 
 ### .env File Format
 
-``` 
+``` python
 ## Website Encryption:
 SECRET_KEY = ' '
 
