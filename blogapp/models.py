@@ -19,6 +19,7 @@ class Tag(models.Model):
         representation = f"#{self.name}"
         return representation
 
+
 class Language(models.Model):
     '''
     Table for languages in the blog:
@@ -36,8 +37,9 @@ class Language(models.Model):
 
     @property
     def num_of_titles(self):
-        num_blogs = Blog.objects.filter(language__name = self.name).count()
-        return num_blogs
+        self.titles = Blog.objects.filter(language__name = self.name).count()
+        self.save()
+        return self.titles
 
 
 class Blog(models.Model):
