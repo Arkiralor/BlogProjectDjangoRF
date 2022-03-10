@@ -1,3 +1,4 @@
+from os import environ
 from django.db import models
 
 from userapp.models import Author
@@ -43,10 +44,10 @@ class AudioLanguage(models.Model):
         return self.titles
 
 class AudioPost(models.Model):
-    FILE_BUCKET_URL = "https://s3.amazonaws.com/audiopostapp-audio-files/"
+    AUDIO_POST_URL = environ.get("AUDIO_POST_URL")
 
     name = models.CharField(max_length=64)
-    audio = models.FileField(upload_to=FILE_BUCKET_URL, blank=False)
+    audio = models.FileField(upload_to=AUDIO_POST_URL, blank=False)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='recorded_by')
     language = models.ForeignKey(
         AudioLanguage, 
