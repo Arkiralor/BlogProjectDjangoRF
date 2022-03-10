@@ -70,9 +70,7 @@ class AddPostView(APIView):
 
         language_detector = LanguageUtils(request.data.get("body"))
         if request.data.get("language") is None:
-            
             lang = language_detector.detect_language()
-
             request.data["language"] = language_detector.enter_language(lang)
         else:
             request.data["language"] = language_detector.enter_language(request.data.get("language"))
