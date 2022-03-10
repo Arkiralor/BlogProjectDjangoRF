@@ -1,16 +1,15 @@
-from turtle import update
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
+
 from userapp.models import Author, User
 from userapp.serializers import AuthorSerializer
 from .models import Blog, Tag
-from .serializers import BlogPostSerializer, BlogSerializer, TagSerializer
-from .utils import TagUtils
+from .serializers import BlogPostSerializer, BlogInSerializer, BlogOutSerializer, TagSerializer
+from .utils import TagUtils, LanguageUtils
 
 # Create your views here.
 
@@ -25,7 +24,7 @@ class BlogView(APIView):
         GET all blog-posts:
         '''
         queryset = Blog.objects.all()
-        serialized = BlogSerializer(queryset, many=True)
+        serialized = BlogOutSerializer(queryset, many=True)
 
         return Response(
             serialized.data,
@@ -69,7 +68,16 @@ class AddPostView(APIView):
             # Replace the hashtags with their IDs.
             request.data["tags"] = tags.resolve_tags()
 
-        deserialized = BlogSerializer(data=request.data)
+        language_detector = LanguageUtils(request.data.get("body"))
+        if request.data.get("language") is None:
+            
+            lang = language_detector.detect_language()
+
+            request.data["language"] = language_detector.enter_language(lang)
+        else:
+            request.data["language"] = language_detector.enter_language(request.data.get("language"))
+
+        deserialized = BlogInSerializer(data=request.data)
 
         if deserialized.is_valid():
             deserialized.save()

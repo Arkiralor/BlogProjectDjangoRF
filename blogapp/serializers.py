@@ -1,13 +1,42 @@
+from pyexpat import model
 from rest_framework import serializers
-from .models import Blog, Tag
+from .models import Language, Blog, Tag
 
 # Create your serializers here:
 
 
-class BlogSerializer(serializers.ModelSerializer):
+class LanguageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Language
+        fields = "__all__"
+
+
+class BlogInSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
-        fields = ['id', 'title', 'body', 'published', 'author', 'tags', 'genre']
+        fields = ['id', 'title', 'body', 'language',
+                  'published', 'author', 'tags', 'genre']
+
+
+class BlogOutSerializer(serializers.ModelSerializer):
+
+    language = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='name'
+    )
+
+    tags = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='name'
+    )
+
+    class Meta:
+        model = Blog
+        fields = ['id', 'title', 'body', 'language',
+                  'published', 'author', 'tags', 'genre']
 
 
 class BlogPostSerializer(serializers.ModelSerializer):

@@ -77,6 +77,9 @@ LANGUAGE_CODE = ' '
 TIME_ZONE = ' '
 USE_I18N = True/False
 USE_TZ = True /False
+
+## AWS S3 Settings:
+AUDIO_POST_URL = ' '
 ```
 
 ### Documentation:

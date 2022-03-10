@@ -20,6 +20,28 @@ class Tag(models.Model):
         return representation
 
 
+class Language(models.Model):
+    '''
+    Table for languages in the blog:
+    '''
+    name = models.CharField(max_length=32, unique=True)
+    titles = models.IntegerField(null=True)
+
+    class Meta:
+        ordering = ["name"]
+        verbose_name = "Language"
+        verbose_name_plural = "Languages"
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def num_of_titles(self):
+        self.titles = Blog.objects.filter(language__name = self.name).count()
+        self.save()
+        return self.titles
+
+
 class Blog(models.Model):
     '''
     Table for individual blog posts.
@@ -27,9 +49,19 @@ class Blog(models.Model):
     title = models.CharField(max_length=128)
     body = models.TextField()
     author = models.ForeignKey(
-        Author, on_delete=models.CASCADE, related_name="written_by")
+        Author, 
+        on_delete=models.CASCADE, 
+        related_name="written_by"
+        )
     published = models.DateField(auto_now_add=True)
     added = models.DateTimeField(auto_now_add=True)
+    language = models.ForeignKey(
+        Language, 
+        null=True, 
+        blank=True, 
+        on_delete=models.SET_NULL,
+        related_name="written_in"
+        )
     genre = models.CharField(max_length=64, choices=GENRE_CHOICES)
     tags = models.ManyToManyField(Tag, related_name='tags')
 

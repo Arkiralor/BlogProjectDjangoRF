@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import *
+from blogapp.views import BlogView, TagView, AddPostView, BlogIndView
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
