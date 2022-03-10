@@ -73,6 +73,8 @@ class AddPostView(APIView):
             lang = language_detector.detect_language()
 
             request.data["language"] = language_detector.enter_language(lang)
+        else:
+            request.data["language"] = language_detector.enter_language(request.data.get("language"))
 
         deserialized = BlogInSerializer(data=request.data)
 
