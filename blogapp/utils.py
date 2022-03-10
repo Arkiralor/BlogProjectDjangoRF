@@ -85,6 +85,7 @@ class LanguageUtils:
         return LANG_DICT.get(lang_code)
 
     def enter_language(self, name: str):
+        name = name.capitalize()
         language = Language.objects.filter(name=name).first()
         code_id = None
         if language is not None:

@@ -68,8 +68,9 @@ class AddPostView(APIView):
             # Replace the hashtags with their IDs.
             request.data["tags"] = tags.resolve_tags()
 
+        language_detector = LanguageUtils(request.data.get("body"))
         if request.data.get("language") is None:
-            language_detector = LanguageUtils(request.data.get("body"))
+            
             lang = language_detector.detect_language()
 
             request.data["language"] = language_detector.enter_language(lang)
