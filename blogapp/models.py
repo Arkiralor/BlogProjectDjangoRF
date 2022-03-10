@@ -25,7 +25,7 @@ class Language(models.Model):
     Table for languages in the blog:
     '''
     name = models.CharField(max_length=32, unique=True)
-    titles = models.IntegerField()
+    titles = models.IntegerField(null=True)
 
     class Meta:
         ordering = ["name"]
