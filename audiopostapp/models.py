@@ -43,8 +43,10 @@ class AudioLanguage(models.Model):
         return self.titles
 
 class AudioPost(models.Model):
+    FILE_BUCKET_URL = "https://s3.amazonaws.com/audiopostapp-audio-files/"
+
     name = models.CharField(max_length=64)
-    audio = models.FileField(upload_to='media/audioposts/audiodiles/', blank=False)
+    audio = models.FileField(upload_to=FILE_BUCKET_URL, blank=False)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='recorded_by')
     language = models.ForeignKey(
         AudioLanguage, 
