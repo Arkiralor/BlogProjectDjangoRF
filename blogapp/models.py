@@ -47,7 +47,10 @@ class Blog(models.Model):
     title = models.CharField(max_length=128)
     body = models.TextField()
     author = models.ForeignKey(
-        Author, on_delete=models.CASCADE, related_name="written_by")
+        Author, 
+        on_delete=models.CASCADE, 
+        related_name="written_by"
+        )
     published = models.DateField(auto_now_add=True)
     added = models.DateTimeField(auto_now_add=True)
     language = models.ForeignKey(
