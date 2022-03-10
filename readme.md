@@ -22,12 +22,12 @@ __Source__: [cultofweb.com](https://cultofweb.com/blog/blogging-platforms-compar
 
 ### Details
 
-1. __Type__: REST API
-2. __Authentication__: Token Authetication
-3. __Database Type__: Relational
-4. __Database__: PostgreSQL
-5. __Types of Users__: Superuser, Staff, User
-6. __Timezone__: Asia/Kolkata (UTC +05:30hrs)
+1. __Type__: ```REST API```
+2. __Authentication__: ```Token Authetication```
+3. __Database Type__: ```Relational```
+4. __Database__: ```PostgreSQL```
+5. __Types of Users__: ```Superuser```, ```Staff```, ```User```
+6. __Timezone__: ```Asia/Kolkata (UTC +05:30hrs)```
 
 ## Development Environment Setup
 
