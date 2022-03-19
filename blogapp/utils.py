@@ -70,26 +70,39 @@ class LanguageUtils:
         '''
         return f"{self.input_text}"
 
-    def detect_language(self) -> str:
+    def detect_language(self):
         '''
         Method to detect the language of the passed text:
         '''
-        ln.factory("language_detector", func=create_lang_detector)
-        nlp = en_core_web_sm.load(disable=[None])
-        nlp.max_length = 2000000
+        try:
+            ## 001 (prithoo): MAJOR CHANGE in Spacy v3:
+            ## Language.factory() no longer accepts a class directly as the first arg.
+            ## Instead, now it calls a tagged decorator that calls a function that return the class-pointer.
+            ln.factory("language_detector", func=create_lang_detector)
 
-        nlp.add_pipe("language_detector", last=True)
+            ## 001 (prithoo): Loading the NLP model to the nlp object
+            nlp = en_core_web_sm.load(disable=[None])
 
-        doc = nlp(self.input_text)
-        lang_code = doc._.language.get("language")
-        lang_confidence = doc._.language.get("score")
 
-        if lang_confidence >= self.confidence_threshold and lang_code in LANG_DICT.keys():
-            return LANG_DICT.get(lang_code)
-        elif lang_confidence < self.confidence_threshold or lang_code not in LANG_DICT.keys():
-            return LANG_DICT.get("default")
-        else:
-            return LANG_DICT.get("default")
+            ## 001 (prithoo): Max length of the input text.
+            nlp.max_length = 2_000_000
+
+            nlp.add_pipe("language_detector", last=True)
+
+            ## 001 (prithoo): Initial parsing of the text by the nlp object
+            doc = nlp(self.input_text)
+            lang_code = doc._.language.get("language")
+            confidence_score = doc._.language.get("score")
+
+
+            if confidence_score >= self.confidence_threshold and lang_code in LANG_DICT.keys():
+                return LANG_DICT.get(lang_code)
+            else:
+                lang_code = "default"
+                return LANG_DICT.get(lang_code)
+                
+        except Exception as ex:
+            print(f"Error: {ex}")
 
     def enter_language(self, name: str) -> int:
         name = name.capitalize()

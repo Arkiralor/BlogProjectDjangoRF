@@ -72,18 +72,62 @@ TEMPLATES = [
 WSGI_APPLICATION = 'blogproject.wsgi.application'
 ASGI_APPLICATION = 'blogproject.asgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': environ['DATABASE'],
+#         'USER': environ['USER'],
+#         'PASSWORD': environ['PASSWORD'],
+#         'HOST': environ['HOST'],
+#         'PORT': environ['PORT']
+#     },
+#     'developer': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'djongo',
         'NAME': environ['DATABASE'],
-        'USER': environ['USER'],
-        'PASSWORD': environ['PASSWORD'],
-        'HOST': environ['HOST'],
-        'PORT': environ['PORT']
+    }
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
     },
-    'developer': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'myproject.custom': {
+            'handlers': ['console'],
+            'level': 'INFO'
+        }
     }
 }
 

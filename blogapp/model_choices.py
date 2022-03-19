@@ -3,22 +3,64 @@ GENRE_CHOICES = (
     ('Fiction', 'fiction'),
     ('Non-Fiction', 'non-fiction'),
     ('Poetry', 'poetry'),
-    ('Journal', 'journal')
+    ('Journal', 'journal'),
+    ('Biography', 'biography'),
+    ('Textbook', 'textbook'),
+    ('Self-Help', 'self-help'),
+    ('Encyclopedia', 'encyclopedia'),
+    ('Dictionary', 'dictionary'),
+    ('Other', 'other'),
 )
 
 LANG_DICT = {
-    'en': 'English', 'es': 'Spanish', 'fr': 'French', 'de': 'German',
-    'it': 'Italian', 'pt': 'Portuguese', 'ru': 'Russian', 'ja': 'Japanese',
-    'zh': 'Chinese', 'ko': 'Korean', 'ar': 'Arabic', 'tr': 'Turkish',
-    'vi': 'Vietnamese', 'hi': 'Hindi', 'id': 'Indonesian', 'ms': 'Malay',
-    'th': 'Thai', 'fa': 'Persian', 'bn': 'Bengali', 'tl': 'Tagalog',
-    'ta': 'Tamil', 'te': 'Telugu', 'ml': 'Malayalam', 'kn': 'Kannada',
-    'mr': 'Marathi', 'pa': 'Punjabi', 'gu': 'Gujarati', 'or': 'Oriya',
-    'sa': 'Sanskrit', 'ur': 'Urdu', 'as': 'Assamese', 'my': 'Burmese',
-    'am': 'Amharic', 'ne': 'Nepali', 'sd': 'Sindhi', 'si': 'Sinhala',
-    'lo': 'Lao', 'km': 'Khmer', 'bo': 'Tibetan', 'default': 'Unknown',
-    'la': 'Latin'
+    "am": "Amharic",
+    "ar": "Arabic",
+    "as": "Assamese",
+    "bn": "Bengali",
+    "bo": "Tibetan",
+    "ca": "Catalan",
+    "de": "German",
+    "default": "Unknown",
+    "en": "English",
+    "es": "Spanish",
+    "fa": "Persian",
+    "fr": "French",
+    "gu": "Gujarati",
+    "hi": "Hindi",
+    "id": "Indonesian",
+    "is": "Icelandic",
+    "it": "Italian",
+    "ja": "Japanese",
+    "km": "Khmer",
+    "kn": "Kannada",
+    "ko": "Korean",
+    "lo": "Lao",
+    "ml": "Malayalam",
+    "mr": "Marathi",
+    "ms": "Malay",
+    "my": "Burmese",
+    "ne": "Nepali",
+    "no": "Norweigian",
+    "or": "Oriya",
+    "pa": "Punjabi",
+    "pt": "Portuguese",
+    "ru": "Russian",
+    "sa": "Sanskrit",
+    "sd": "Sindhi",
+    "si": "Sinhala",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "th": "Thai",
+    "tl": "Tagalog",
+    "tr": "Turkish",
+    "ur": "Urdu",
+    "vi": "Vietnamese",
+    "zh-cn": "Chinese"
 }
 
 if __name__ == "__main__":
-    pass
+    from datetime import datetime
+    from os import sep
+
+    print(f"[{datetime.now()}]   [{__file__.split(sep)[-1]}]  as  [{__name__}]    IMPROPER EXECUTION")
+    print(f"[Error]   [{__file__.split(sep)[-1]}]    INTENDED FOR IMPORT ONLY")
