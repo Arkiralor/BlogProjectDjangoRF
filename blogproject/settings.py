@@ -3,10 +3,10 @@ from os import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY:str = environ['SECRET_KEY']
+SECRET_KEY: str = environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG:bool = bool(environ['DEBUG'])
+DEBUG: bool = bool(environ['DEBUG'])
 
 ALLOWED_HOSTS = ['localhost']
 
@@ -148,13 +148,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE:str = environ["LANGUAGE_CODE"]
+LANGUAGE_CODE: str = environ["LANGUAGE_CODE"]
 
-TIME_ZONE:str = environ["TIME_ZONE"]
+TIME_ZONE: str = environ["TIME_ZONE"]
 
-USE_I18N:bool = bool(environ["USE_I18N"])
+USE_I18N: bool = bool(environ["USE_I18N"])
 
-USE_TZ:bool = bool(environ["USE_TZ"])
+USE_TZ: bool = bool(environ["USE_TZ"])
 
 
 STATIC_URL = 'static/'
