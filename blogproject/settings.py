@@ -72,27 +72,25 @@ TEMPLATES = [
 WSGI_APPLICATION = 'blogproject.wsgi.application'
 ASGI_APPLICATION = 'blogproject.asgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': environ['DATABASE'],
-#         'USER': environ['USER'],
-#         'PASSWORD': environ['PASSWORD'],
-#         'HOST': environ['HOST'],
-#         'PORT': environ['PORT']
-#     },
-#     'developer': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': environ['DATABASE'],
+        'USER': environ['USER'],
+        'PASSWORD': environ['PASSWORD'],
+        'HOST': environ['HOST'],
+        'PORT': environ['PORT']
+    },
+    'developer': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'noSQL': {
+        'ENGINE': 'djongo',
+        'NAME': environ['DATABASE']
     }
 }
+
 
 LOGGING = {
     'version': 1,
