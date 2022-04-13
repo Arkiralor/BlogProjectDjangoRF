@@ -1,3 +1,6 @@
+'''
+Settings module for Project.
+'''
 from pathlib import Path
 from os import environ
 
