@@ -1,0 +1,7 @@
+*/.vscode
+*/env
+*/htmlcov
+
+*.env
+
+*/.coverage
