@@ -16,5 +16,5 @@ urlpatterns = [
     path('<int:id>/', UserGetView.as_view(), name='get_delete_user'),
     path('<int:id>/setsuper/', SetSuperView.as_view(), name='set_super'),
     path('<int:id>/setstaff/', SetStaffView.as_view(), name='set_staff'),
-    path('author/all/', include(router.urls))
+    path('author/', include(router.urls))
 ]
