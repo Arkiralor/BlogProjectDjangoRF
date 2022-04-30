@@ -91,4 +91,5 @@ class XYZView(APIView):
             status=status.HTTP_200_OK
         )
 ```
+
 And with this, we have created a view that can only be accessed by users with `tier_5` as their `user_type`.
