@@ -5,7 +5,6 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
-from auth.user_auth import HasKeyAuth
 from userapp.models import Author, User
 from userapp.serializers import AuthorSerializer, UserAdminSerializer
 from .models import Blog, Tag
@@ -13,28 +12,6 @@ from .serializers import BlogPostSerializer, BlogInSerializer, BlogOutSerializer
 from .utils import TagUtils, LanguageUtils
 
 # Create your views here.
-
-class KeyAuthTestView(APIView):
-    '''
-    View to test the key-auth:
-    '''
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [HasKeyAuth]
-
-    def get(self, request):
-        '''
-        GET the key-auth test:
-        '''
-        user = request.user
-        serialized = UserAdminSerializer(user)
-        return Response(
-            {
-                "message": "You have successfully authenticated with the custom KeyAuth permission class.",
-                "user": serialized.data
-            },
-            status=status.HTTP_200_OK
-        )
-
 
 class BlogView(APIView):
     '''
