@@ -6,9 +6,9 @@ from .models import User, Author
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'username', 'email', 'is_staff', 'is_superuser')
-    list_filter = ('is_staff', 'is_superuser')
-    search_fields = ('username', 'email')
+    list_display = ('id', 'username', 'email', 'is_staff', 'is_superuser', 'has_key', 'user_type')
+    list_filter = ('is_staff', 'is_superuser', 'user_type')
+    search_fields = ('username', 'email', 'user_type')
     list_per_page = 10
 
 
@@ -19,5 +19,5 @@ class AuthorAdmin(admin.ModelAdmin):
     link_fields = ('user',)
     list_filter = ('date_joined',)
     search_fields = ('user__username', 'user__email',
-                     'user__is_staff', 'user__is_superuser')
+                     'user__is_staff', 'user__is_superuser','user__user_type', 'user__has_key')
     list_per_page = 10
