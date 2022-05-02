@@ -190,6 +190,12 @@ class ReportPostView(APIView):
     permission_classes = (IsAuthenticated, )
 
     def post(request):
+        '''
+        :data dict:
+        post_id: int
+        reason: str
+        elaboration: str
+        '''
         data = request.data
         post_id = data.get("post_id")
         blog_post = Blog.objects.get(pk=post_id)
