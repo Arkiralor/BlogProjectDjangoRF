@@ -33,6 +33,7 @@ THIRD_PARTY_APPS = [
 CUSTOM_APPS = [
     'audiopostapp',
     'blogapp',
+    'modapp',
     'userapp'
 ]
 
