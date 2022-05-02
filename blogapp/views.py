@@ -15,6 +15,7 @@ from modapp.serializers import ReportedPostSerializer
 
 # Create your views here.
 
+
 class BlogView(APIView):
     '''
     View to GET all blog-posts and POST a new blog-post:
@@ -74,7 +75,8 @@ class AddPostView(APIView):
             lang = language_detector.detect_language()
             request.data["language"] = language_detector.enter_language(lang)
         else:
-            request.data["language"] = language_detector.enter_language(request.data.get("language"))
+            request.data["language"] = language_detector.enter_language(
+                request.data.get("language"))
 
         deserialized = BlogInSerializer(data=request.data)
 
@@ -191,10 +193,11 @@ class ReportPostView(APIView):
 
     def post(request):
         '''
-        :data dict:
-        post_id: int
-        reason: str
-        elaboration: str
+        :data dict {
+                post_id: int,
+                reason: str,
+                elaboration: str
+            }
         '''
         data = request.data
         post_id = data.get("post_id")
@@ -247,7 +250,6 @@ class ReportPostView(APIView):
                     },
                     status=status.HTTP_400_BAD_REQUEST
                 )
-        
 
 
 class TagView(ModelViewSet):
@@ -259,5 +261,3 @@ class TagView(ModelViewSet):
     lookup_field = 'id'
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-
-

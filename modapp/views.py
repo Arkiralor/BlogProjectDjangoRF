@@ -12,6 +12,7 @@ from userapp.serializers import UserAdminSerializer, AuthorSerializer
 from auth.custom_permissions import IsModerator
 # Create your views here.
 
+
 class GetAllReportedView(APIView):
     '''
     View to GET all reported posts:
