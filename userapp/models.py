@@ -9,6 +9,7 @@ class User(AbstractUser):
     Custom user model.
     """
     has_key = models.BooleanField(default=False)
+    
 
 
 class Author(models.Model):
