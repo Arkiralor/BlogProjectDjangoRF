@@ -14,28 +14,6 @@ from .utils import TagUtils, LanguageUtils
 
 # Create your views here.
 
-class KeyAuthTestView(APIView):
-    '''
-    View to test the key-auth:
-    '''
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [HasKeyAuth]
-
-    def get(self, request):
-        '''
-        GET the key-auth test:
-        '''
-        user = request.user
-        serialized = UserAdminSerializer(user)
-        return Response(
-            {
-                "message": "You have successfully authenticated with the custom KeyAuth permission class.",
-                "user": serialized.data
-            },
-            status=status.HTTP_200_OK
-        )
-
-
 class BlogView(APIView):
     '''
     View to GET all blog-posts and POST a new blog-post:
