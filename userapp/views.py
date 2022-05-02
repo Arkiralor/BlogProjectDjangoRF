@@ -1,5 +1,6 @@
-from .models import Author, User
-from .serializers import AuthorSerializer, UserSerializer, UserAdminSerializer
+from userapp.models import Author, User
+from userapp.serializers import AuthorSerializer, UserSerializer, UserAdminSerializer
+from userapp.utils import FileIO
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
@@ -167,6 +168,9 @@ class UserLoginView(APIView):
             )
 
         token = Token.objects.get_or_create(user=user)
+
+        FileIO.write_token_to_file(username, token)        
+
         return Response(
             {
                 "token": str(token[0])
