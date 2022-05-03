@@ -9,6 +9,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.authtoken.models import Token
+from auth.custom_permissions import IsModerator
 
 
 # Create your views here.
@@ -57,6 +58,10 @@ class AddUserView(APIView):
             data['is_staff'] = False
         if 'is_superuser' in data.keys():
             data['is_superuser'] = False
+        if 'has_key' in data.keys():
+            data['has_key'] = False
+        if 'user_type' in data.keys():
+            data['user_type'] = 'normal_user'
         deserialized = UserSerializer(data=data)
 
         if deserialized.is_valid():
@@ -267,7 +272,8 @@ class UserGetView(APIView):
     '''
     API to get/delete details of a single user:
     '''
-
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
     def get(self, request, id:int):
         '''
         Get a single user via ID:
@@ -310,5 +316,49 @@ class UserGetView(APIView):
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
+
+
+class MakeModeratorView(APIView):
+    '''
+    API to assign a user as a moderator
+    '''
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAdminUser,IsModerator)
+
+    def post(self, request):
+        '''
+        POST request to assign a moderator
+        '''
+        target_user_id = request.data.get("target_user_id")
+        target_user = User.objects.get(pk=target_user_id)
+        if target_user is None:
+            raise User.DoesNotExist
+            
+
+        if target_user.user_type == "moderator":
+            resp = {
+                "error": "this user is already a moderator."
+            }
+            status_code = status.HTTP_406_NOT_ACCEPTABLE
+
+        if target_user.user_type == "maintainence" or target_user.user_type == "user_admin":
+            resp = {
+                "warning": f"this user is of higher access: {target_user.user_type}"
+            }
+            target_user.user_type == "moderator"
+            target_user.save()
+            status_code = status.HTTP_202_ACCEPTED
+
+        target_user.user_type == "moderator"
+        target_user.save()
+        status_code = status.HTTP_201_CREATED
+        serialized = UserSerializer(target_user)
+
+        resp = serialized.data
+
+        return Response(
+            resp,
+            status_code
+        )
 
 
