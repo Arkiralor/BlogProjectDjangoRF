@@ -2,7 +2,7 @@
 Settings module for Project.
 '''
 from pathlib import Path
-from os import environ
+from os import environ, sep
 
 from blogproject.apps import DJANGO_APPS, THIRD_PARTY_APPS, CUSTOM_APPS
 from blogproject.middleware import DJANGO_MIDDLEWARE, THIRD_PARTY_MIDDLEWARE
@@ -115,18 +115,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+## System Configurations
 LANGUAGE_CODE: str = environ["LANGUAGE_CODE"]
-
 TIME_ZONE: str = environ["TIME_ZONE"]
-
 USE_I18N: bool = bool(environ["USE_I18N"])
-
 USE_TZ: bool = bool(environ["USE_TZ"])
-
-
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR + sep + 'static'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'userapp.User'
 CORS_ALLOW_ALL_ORIGINS = True
