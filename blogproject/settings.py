@@ -4,6 +4,9 @@ Settings module for Project.
 from pathlib import Path
 from os import environ
 
+from blogproject.apps import DJANGO_APPS, THIRD_PARTY_APPS, CUSTOM_APPS
+from blogproject.middleware import DJANGO_MIDDLEWARE, THIRD_PARTY_MIDDLEWARE
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY: str = environ['SECRET_KEY']
@@ -15,44 +18,7 @@ ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
-
-DJANGO_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles'
-]
-
-THIRD_PARTY_APPS = [
-    'rest_framework',
-    'rest_framework.authtoken'
-]
-
-CUSTOM_APPS = [
-    'audiopostapp',
-    'blogapp',
-    'modapp',
-    'userapp'
-]
-
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
-
-DJANGO_MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
-]
-
-THIRD_PARTY_MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware'
-]
-
 MIDDLEWARE = DJANGO_MIDDLEWARE + THIRD_PARTY_MIDDLEWARE
 
 ROOT_URLCONF = 'blogproject.urls'
