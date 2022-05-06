@@ -9,6 +9,7 @@ class LanguageHAndler:
     '''
 
     threshold:float = 0.70
+    language:str = "English"
 
     @classmethod
     def search_similiar(cls, query: str, language: str):
@@ -16,14 +17,15 @@ class LanguageHAndler:
         Function to look for posts who are cosine similiar to the passed query.
         '''
         nlp = spacy.load('en_core_web_sm')
+        if language is None:
+            language = cls.language
         posts = Blog.objects.filter(language__name=language)
         serialized = BlogOutSerializer(posts, many=True)
         recommended_posts = []
         for post in serialized.data:
             doc = nlp(post['body'])
             doc_vector = doc.vector
-            cosine_similarity = nlp(query).similarity(doc)
-            if cosine_similarity > cls.threshold:
+            if nlp(query).similarity(doc) > cls.threshold:
                 recommended_posts.append(post)
 
         

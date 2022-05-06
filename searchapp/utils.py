@@ -15,7 +15,7 @@ class SearchUtil:
         self.type = type
 
         
-    def resolve(self) -> List[dict]:
+    def resolve(self):
         '''
         Resolve the search query to call the appropriate method and return the results.
         '''    
