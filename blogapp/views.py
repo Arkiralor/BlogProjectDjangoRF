@@ -10,6 +10,8 @@ from userapp.serializers import AuthorSerializer, UserAdminSerializer
 from .models import Blog, Tag
 from .serializers import BlogPostSerializer, BlogInSerializer, BlogOutSerializer, TagSerializer
 from .utils import TagUtils, LanguageUtils
+from modapp.models import ReportedPost
+from modapp.serializers import ReportedPostSerializer
 
 # Create your views here.
 
@@ -72,7 +74,8 @@ class AddPostView(APIView):
             lang = language_detector.detect_language()
             request.data["language"] = language_detector.enter_language(lang)
         else:
-            request.data["language"] = language_detector.enter_language(request.data.get("language"))
+            request.data["language"] = language_detector.enter_language(
+                request.data.get("language"))
 
         deserialized = BlogInSerializer(data=request.data)
 
@@ -180,6 +183,74 @@ class BlogIndView(APIView):
             )
 
 
+class ReportPostView(APIView):
+    '''
+    View to report a BlogPost
+    '''
+    authentication_classes = (TokenAuthentication, )
+    permission_classes = (IsAuthenticated, )
+
+    def post(request):
+        '''
+        :data dict {
+                post_id: int,
+                reason: str,
+                elaboration: str
+            }
+        '''
+        data = request.data
+        post_id = data.get("post_id")
+        blog_post = Blog.objects.get(pk=post_id)
+        if blog_post is None:
+            return Response(
+                {
+                    "error": f"Blog with ID #{post_id} does not exist."
+                },
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        if blog_post.author.user == request.user or request.user.is_superuser:
+            return Response(
+                {
+                    "error": f"You cannot report this post."
+                },
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        is_reported = ReportedPost.objects.filter(post=blog_post).first()
+        if is_reported:
+            is_reported.reports += 1
+            is_reported.save()
+            return Response(
+                {
+                    "message": f"You have reported this post. Thank you for your feedback."
+                },
+                status=status.HTTP_200_OK
+            )
+        elif not is_reported:
+            report_dict = {
+                "post": blog_post,
+                "reporter": request.user,
+                "reason": data.get("reason"),
+                "elaboration": data.get("elaboration", ""),
+                "reports": 1
+            }
+            serialized = ReportedPostSerializer(data=report_dict)
+            if serialized.is_valid():
+                serialized.save()
+                return Response(
+                    serialized.data,
+                    status=status.HTTP_201_CREATED
+                )
+            else:
+                return Response(
+                    {
+                        "error": str(serialized.errors)
+                    },
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+
 class TagView(ModelViewSet):
     '''
     Model Viewset for all tags registered in the system:
@@ -189,5 +260,3 @@ class TagView(ModelViewSet):
     lookup_field = 'id'
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-
-

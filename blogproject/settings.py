@@ -2,7 +2,10 @@
 Settings module for Project.
 '''
 from pathlib import Path
-from os import environ
+from os import environ, sep
+
+from blogproject.apps import DJANGO_APPS, THIRD_PARTY_APPS, CUSTOM_APPS
+from blogproject.middleware import DJANGO_MIDDLEWARE, THIRD_PARTY_MIDDLEWARE
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,43 +18,7 @@ ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
-
-DJANGO_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles'
-]
-
-THIRD_PARTY_APPS = [
-    'rest_framework',
-    'rest_framework.authtoken'
-]
-
-CUSTOM_APPS = [
-    'audiopostapp',
-    'blogapp',
-    'userapp'
-]
-
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
-
-DJANGO_MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
-]
-
-THIRD_PARTY_MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware'
-]
-
 MIDDLEWARE = DJANGO_MIDDLEWARE + THIRD_PARTY_MIDDLEWARE
 
 ROOT_URLCONF = 'blogproject.urls'
@@ -148,18 +115,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+## System Configurations
 LANGUAGE_CODE: str = environ["LANGUAGE_CODE"]
-
 TIME_ZONE: str = environ["TIME_ZONE"]
-
 USE_I18N: bool = bool(environ["USE_I18N"])
-
 USE_TZ: bool = bool(environ["USE_TZ"])
-
-
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR + sep + 'static'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'userapp.User'
 CORS_ALLOW_ALL_ORIGINS = True

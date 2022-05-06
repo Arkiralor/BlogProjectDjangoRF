@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from userapp.model_choices import USER_TYPE_CHOICES
 
 # Create your models here.
 
@@ -9,6 +10,14 @@ class User(AbstractUser):
     Custom user model.
     """
     has_key = models.BooleanField(default=False)
+    user_type = models.CharField(
+        max_length=32,
+        choices=USER_TYPE_CHOICES,
+        default='normal_user',
+        blank=True,
+        null=True
+    )
+    
 
 
 class Author(models.Model):

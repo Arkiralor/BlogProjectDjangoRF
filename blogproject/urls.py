@@ -21,4 +21,5 @@ urlpatterns = [
     path('blog/', include('blogapp.urls')),
     path('user/', include('userapp.urls')),
     path('audio/', include('audiopostapp.urls')),
+    path('modview/', include('modapp.urls')),
 ]
