@@ -24,7 +24,6 @@ class LanguageHAndler:
         recommended_posts = []
         for post in serialized.data:
             doc = nlp(post.get("body", ""))
-            doc_vector = doc.vector
             if nlp(query).similarity(doc) > cls.threshold:
                 recommended_posts.append(post)
         return recommended_posts
