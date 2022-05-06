@@ -15,7 +15,6 @@ from modapp.serializers import ReportedPostSerializer
 
 # Create your views here.
 
-
 class BlogView(APIView):
     '''
     View to GET all blog-posts and POST a new blog-post:

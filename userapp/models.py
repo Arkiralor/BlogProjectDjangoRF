@@ -28,15 +28,15 @@ class Author(models.Model):
         return self.user.username
 
     @property
-    def get_email(self):
+    def email(self):
         return self.user.email
 
     @property
-    def get_username(self):
+    def username(self):
         return self.user.username
 
     @property
-    def get_user_id(self):
+    def user_id(self):
         return self.user.id
 
     @property
