@@ -16,5 +16,6 @@ CUSTOM_APPS = [
     'audiopostapp',
     'blogapp',
     'modapp',
+    'searchapp',
     'userapp'
 ]
