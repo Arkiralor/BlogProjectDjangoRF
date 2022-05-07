@@ -9,6 +9,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
+
 class SearchPostView(APIView):
     '''
     API to search for a particular blog post.
@@ -26,7 +27,7 @@ class SearchPostView(APIView):
         type = request.GET.get('type')
         search_util = SearchUtil(query, type)
         resp = search_util.resolve()
-        if resp is None or len(resp) == 0:
+        if resp.get("results") is None or len(resp.get("results")) == 0:
             return Response(
                 {
                     "error": f"No results found for query: {query} and type: {type}"
@@ -37,4 +38,3 @@ class SearchPostView(APIView):
             resp,
             status=status.HTTP_200_OK
         )
-        

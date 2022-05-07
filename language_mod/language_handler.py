@@ -1,30 +1,26 @@
 import spacy
-from blogapp.models import Blog
-from blogapp.serializers import BlogOutSerializer, LanguageSerializer
 import en_core_web_sm
 
 class LanguageHAndler:
     '''
-    Class to process languages and recommend posts with similliar context.
+    Class to process languages and check similliarity.
     '''
 
     threshold:float = 0.70
     language:str = "English"
 
     @classmethod
-    def search_similiar(cls, query: str, language: str):
+    def check_if_similiar(cls, query: str, body: str):
         '''
-        Function to look for posts who are cosine similiar to the passed query.
+        Function to if query and body are cosine similiar to each other.
         '''
+        is_similiar = False
         nlp = spacy.load('en_core_web_sm')
-        if language is None:
-            language = cls.language
-        posts = Blog.objects.filter(language__name=language)
-        serialized = BlogOutSerializer(posts, many=True)
-        recommended_posts = []
-        for post in serialized.data:
-            doc = nlp(post.get("body", ""))
+        try:
+            doc = nlp(body)
             if nlp(query).similarity(doc) > cls.threshold:
-                recommended_posts.append(post)
-        return recommended_posts
+                is_similiar = True
+        except Exception as ex:
+            print(f"Error: {ex}")
+        return is_similiar
 

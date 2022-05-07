@@ -22,6 +22,6 @@ class TestBlogApp(TestCase):
         '''
         query = "Moi aaji janu eyaat ki kori aasu?"
         language = LanguageUtils(query).detect_language()
-        assert(language != "English")
+        self.assertEqual(language, "Unknown")
 
 
