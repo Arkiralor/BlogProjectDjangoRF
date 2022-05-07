@@ -79,6 +79,6 @@ class SearchUtil:
             if LanguageHAndler.check_if_similiar(query, item.get("body", "")):
                 resp["results"].append(item)
         resp["lenght"] = len(resp["results"])
-        if resp.get("results") is None or len(resp.get("results")) == 0:
+        if resp.get("results") is None or resp["lenght"] == 0:
             raise Exception("No results found")
         return resp
