@@ -22,4 +22,5 @@ urlpatterns = [
     path('user/', include('userapp.urls')),
     path('audio/', include('audiopostapp.urls')),
     path('modview/', include('modapp.urls')),
+    path('search/', include('searchapp.urls'))
 ]
